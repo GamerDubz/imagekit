@@ -1,11 +1,137 @@
 @import "tailwindcss";
 
+@theme {
+  /* Light-table palette — lavender-tinted white with soft charcoal ink and a
+     single warm coral accent used only for calls-to-action and progress. */
+  --color-bg: #f6f3fb;
+  --color-bg-deep: #efe9f8;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #f1edf9;
+  --color-border: #e2dcf0;
+  --color-border-strong: #cfc6e6;
+  --color-ink: #2a2630;
+  --color-ink-soft: #59526a;
+  --color-ink-faint: #8a8299;
+  --color-accent: #ff5f4d;
+  --color-accent-hover: #ea4d3c;
+  --color-accent-tint: #ffe7e2;
+  --color-accent-ink: #7c2a1f;
+  --color-positive: #1f8a5f;
+  --color-positive-tint: #e2f5ec;
+  --color-negative: #c23b3b;
+  --color-negative-tint: #fbe8e6;
+
+  --font-sans: var(--font-manrope), 'Manrope', system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgba(42, 38, 48, 0.04), 0 8px 24px -12px rgba(42, 38, 48, 0.14);
+  --shadow-lift: 0 4px 10px rgba(42, 38, 48, 0.06), 0 20px 40px -20px rgba(42, 38, 48, 0.2);
+  --radius-sheet: 18px;
+}
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  color-scheme: light;
+}
+
 body {
-  background-color: #09090b;
-  color: #f4f4f5;
-  font-family: system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(ellipse 1200px 700px at 15% -10%, rgba(255, 95, 77, 0.06), transparent 60%),
+    radial-gradient(ellipse 900px 600px at 100% 0%, rgba(124, 92, 255, 0.06), transparent 55%),
+    var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* Visible, consistent focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom range slider — flat light-table styling, no browser chrome */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-border-strong);
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid var(--color-surface);
+  box-shadow: 0 1px 4px rgba(42, 38, 48, 0.35);
+  margin-top: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+input[type='range']:hover::-webkit-slider-thumb {
+  transform: scale(1.1);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid var(--color-surface);
+  box-shadow: 0 1px 4px rgba(42, 38, 48, 0.35);
+  cursor: pointer;
+}
+
+input[type='range']::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-border-strong);
+}
+
+/* Slim custom scrollbar for the contact-sheet surface */
+.sheet-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+
+.sheet-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.sheet-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: 999px;
+}
+
+.sheet-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
