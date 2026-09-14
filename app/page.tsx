@@ -295,19 +295,31 @@ export default function ImageKitPage() {
   return (
     <div className="min-h-screen flex flex-col bg-neutral-950 text-neutral-100 selection:bg-indigo-500 selection:text-white">
       {/* Top Header */}
-      <header className="border-b border-neutral-800 bg-neutral-900/60 backdrop-blur sticky top-0 z-30 px-6 py-3.5 flex items-center justify-between">
+      <header className="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-30 px-6 py-3.5 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20">
-            IK
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-500 via-pink-500 to-amber-500 p-0.5 shadow-sm shadow-rose-500/25 flex items-center justify-center">
+            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+              <svg className="w-5 h-5 text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="m14.31 8 5.74 9.94" />
+                <path d="M9.69 8h11.48" />
+                <path d="m7.38 12 5.74-9.94" />
+                <path d="M9.69 16 3.95 6.06" />
+                <path d="M14.31 16H2.83" />
+                <path d="m16.62 12-5.74 9.94" />
+              </svg>
+            </div>
           </div>
           <div>
-            <h1 className="text-base font-semibold leading-none flex items-center gap-2">
-              ImageKit
-              <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
-                100% Client-Side
+            <div className="flex items-center gap-2">
+              <h1 className="text-base font-bold tracking-tight text-white flex items-center gap-2">
+                Image<span className="text-rose-400">Kit</span>
+              </h1>
+              <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-300 border border-rose-500/20 font-medium">
+                Local Studio
               </span>
-            </h1>
-            <p className="text-xs text-neutral-400 mt-0.5">Privacy-First Batch Image Processor</p>
+            </div>
+            <p className="text-[11px] text-slate-400 mt-0.5">Privacy-first batch converter, compressor & image resizer</p>
           </div>
         </div>
 

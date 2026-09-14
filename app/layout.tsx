@@ -5,14 +5,20 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ImageKit — Privacy-First Batch Image Processor',
-  description: 'Batch resize, compress, convert, and rename images locally in your browser. No files are uploaded.',
+  title: 'ImageKit — Client-Side Image Processor & Compressor',
+  description:
+    'Batch resize, compress, convert to WebP/PNG/JPEG, and download locally in your browser. 100% private, zero uploads.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-neutral-950 text-neutral-100 min-h-screen antialiased`}>
+    <html lang="en" className="h-full">
+      <body className={`${inter.className} min-h-full bg-slate-900 text-slate-100 antialiased selection:bg-rose-500/30 selection:text-rose-200`}>
         {children}
       </body>
     </html>
