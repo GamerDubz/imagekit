@@ -236,15 +236,21 @@ export default function ImageKitPage() {
     setIsProcessing(true)
     setProgress(0)
 
-    const updated = [...items]
-    for (let i = 0; i < updated.length; i++) {
-      updated[i] = { ...updated[i], status: 'processing' }
-      setItems([...updated])
+    // Snapshot only which items to process; apply results back by id via functional
+    // updates so files added/removed elsewhere in the queue during processing aren't
+    // clobbered by a stale copy of the array (previously `setItems([...updated])`
+    // overwrote the whole list every iteration, silently dropping anything added
+    // mid-batch).
+    const targets = items
+    for (let i = 0; i < targets.length; i++) {
+      const target = targets[i]
+      setItems((prev) =>
+        prev.map((it) => (it.id === target.id ? { ...it, status: 'processing' } : it))
+      )
 
-      const res = await processImage(updated[i])
-      updated[i] = res
-      setItems([...updated])
-      setProgress(Math.round(((i + 1) / updated.length) * 100))
+      const res = await processImage(target)
+      setItems((prev) => prev.map((it) => (it.id === target.id ? res : it)))
+      setProgress(Math.round(((i + 1) / targets.length) * 100))
     }
 
     setIsProcessing(false)
